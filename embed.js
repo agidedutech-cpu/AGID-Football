@@ -290,6 +290,21 @@ document.getElementById(
 
 ),
 
+ homeLogo:
+document.getElementById("agid-home-logo"),
+
+awayLogo:
+document.getElementById("agid-away-logo"),
+
+homeName:
+document.getElementById("agid-home-name"),
+
+awayName:
+document.getElementById("agid-away-name"),
+
+status:
+document.getElementById("agid-status"),
+
     };
 
     console.log("✓ UI Cached");
@@ -308,10 +323,19 @@ document.getElementById(
     this.ui.competition.textContent =
         match.competition;
 
-    this.ui.title.textContent =
-        match.home.name +
-        " vs " +
-        match.away.name;
+this.ui.homeLogo.src =
+match.home.logo;
+
+this.ui.awayLogo.src =
+match.away.logo;
+
+this.ui.homeName.textContent =
+match.home.name;
+
+this.ui.awayName.textContent =
+match.away.name;
+
+this.startCountdown();
 
     this.ui.header.src =
         "https://www.scorebat.com/embed/matchview/" +
@@ -369,6 +393,70 @@ this.config.branding.showDisclaimer===false
 ){
 
 this.ui.disclaimer.style.display="none";
+
+}
+
+           startCountdown() {
+
+    const kickoff = new Date(this.config.match.kickoff);
+
+    const end = new Date(
+        kickoff.getTime() +
+        this.config.match.duration * 60000
+    );
+
+    const update = () => {
+
+        const now = new Date();
+
+        if (now < kickoff) {
+
+            const diff = kickoff - now;
+
+            const h = Math.floor(diff / 3600000);
+
+            const m = Math.floor((diff % 3600000) / 60000);
+
+            const s = Math.floor((diff % 60000) / 1000);
+
+            this.ui.status.innerHTML =
+                "⏳ Starts in " +
+                String(h).padStart(2, "0") +
+                ":" +
+                String(m).padStart(2, "0") +
+                ":" +
+                String(s).padStart(2, "0");
+
+            this.ui.status.style.background =
+                "#2563eb";
+
+        }
+
+        else if (now < end) {
+
+            this.ui.status.innerHTML =
+                "🔴 LIVE";
+
+            this.ui.status.style.background =
+                "#dc2626";
+
+        }
+
+        else {
+
+            this.ui.status.innerHTML =
+                "✅ FULL TIME";
+
+            this.ui.status.style.background =
+                "#16a34a";
+
+        }
+
+    };
+
+    update();
+
+    setInterval(update, 1000);
 
 }
 
