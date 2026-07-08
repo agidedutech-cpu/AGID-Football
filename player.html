@@ -1,303 +1,165 @@
-<!--
-==================================================
-AGID Football Framework
-Player Layout
-Version : 1.0.0
-Author  : AGID EDU TECH
+<div class="agid-wrapper">
 
-NOTE:
-This file is only the player layout.
-It is loaded automatically by embed.js.
-Do not place match data inside this file.
-==================================================
--->
-
-<div id="agid-player-wrapper">
-
-    <!-- ==========================================
-         MATCH HEADER
-    =========================================== -->
-
+    <!-- Premium Match Header -->
     <header class="agid-header-card">
 
-    <div
-        id="agid-competition-name"
-        class="agid-competition">
-    </div>
+        <div id="agid-competition-name" class="agid-competition">
+            Competition
+        </div>
 
-    <div class="agid-match-row">
+        <div class="agid-match-row">
 
-        <div class="agid-team">
+            <div class="agid-team">
 
-            <img
-                id="agid-home-logo"
-                class="agid-logo">
+                <img id="agid-home-logo" class="agid-logo" alt="Home Team">
 
-            <div
-                id="agid-home-name">
+                <div id="agid-home-name" class="agid-team-name">
+                    Home
+                </div>
+
+            </div>
+
+            <div class="agid-vs">
+
+                VS
+
+            </div>
+
+            <div class="agid-team">
+
+                <img id="agid-away-logo" class="agid-logo" alt="Away Team">
+
+                <div id="agid-away-name" class="agid-team-name">
+                    Away
+                </div>
+
             </div>
 
         </div>
 
-        <div class="agid-vs">
+        <div id="agid-status" class="agid-status">
 
-            VS
-
-        </div>
-
-        <div class="agid-team">
-
-            <img
-                id="agid-away-logo"
-                class="agid-logo">
-
-            <div
-                id="agid-away-name">
-            </div>
+            Loading...
 
         </div>
 
-    </div>
+    </header>
 
-    <div
-        id="agid-status"
-        class="agid-status">
-
-        Loading...
-
-    </div>
-
-</header>
-
-    <!-- ==========================================
-         TEAM HEADER
-    =========================================== -->
-
-    <section class="agid-team-header">
+    <!-- ScoreBat Match Widget -->
+    <section class="agid-scorebat">
 
         <iframe
             id="agid-match-header"
             loading="lazy"
             scrolling="no"
-            frameborder="0"
-            allowfullscreen>
+            frameborder="0">
         </iframe>
 
     </section>
 
-    <!-- ==========================================
-         TAB MENU
-    =========================================== -->
-
+    <!-- Tabs -->
     <nav class="agid-tabs">
 
         <button
             class="agid-tab active"
-            data-tab="broadcast">
+            data-tab="MATCH_BROADCAST">
 
-            📺 MATCH BROADCAST
-
-        </button>
-
-        <button
-            class="agid-tab"
-            data-tab="lineup">
-
-            📋 LINE UP
+            MATCH BROADCAST
 
         </button>
 
         <button
             class="agid-tab"
-            data-tab="events">
+            data-tab="LINE_UP">
 
-            ⚽ MATCH EVENTS
+            LINE UP
+
+        </button>
+
+        <button
+            class="agid-tab"
+            data-tab="MATCH_EVENTS">
+
+            MATCH EVENTS
 
         </button>
 
     </nav>
 
-    <!-- ==========================================
-         BROADCAST PANEL
-    =========================================== -->
-
+    <!-- Broadcast -->
     <section
-        class="agid-panel active"
-        id="broadcast">
+        id="MATCH_BROADCAST"
+        class="agid-panel active">
 
-        <!-- Notice -->
+        <div id="agid-stream-buttons"></div>
 
-        <div class="agid-notice">
-
-            <strong>NOTICE</strong>
-
-            <p>
-
-                If redirected, press the browser Back button
-                and select another stream.
-
-            </p>
-
-        </div>
-
-        <!-- Stream Loading -->
-
-        <div class="agid-loading-message">
-
-            Streams may take up to
-            <strong>15 seconds</strong>
-            to load.
-
-        </div>
-
-        <!-- Reminder -->
-
-        <div class="agid-marquee">
-
-            <div class="agid-marquee-content">
-
-                Please test every available stream.
-                If Stream 1 fails,
-                try Stream 2,
-                then Stream 3,
-                until one works correctly.
-
-            </div>
-
-        </div>
-
-        <!-- Stream Buttons -->
-
-        <div
-            id="agid-stream-buttons">
-
-        </div>
-
-        <!-- Video Player -->
-
-        <div
-            id="agid-video-wrapper">
+        <div class="agid-video-wrapper">
 
             <iframe
-
                 id="agid-video"
-
                 allowfullscreen
-
-                loading="lazy"
-
-                frameborder="0">
-
+                loading="lazy">
             </iframe>
 
         </div>
 
-        <!-- Match Momentum -->
-
-        <div
-            id="agid-momentum-wrapper">
+        <div class="agid-widget">
 
             <iframe
-
                 id="agid-momentum"
-
-                loading="lazy"
-
-                frameborder="0">
-
+                loading="lazy">
             </iframe>
 
         </div>
 
     </section>
 
-    <!-- ==========================================
-         LINE UP PANEL
-    =========================================== -->
-
+    <!-- Line-up -->
     <section
-
-        class="agid-panel"
-
-        id="lineup">
+        id="LINE_UP"
+        class="agid-panel">
 
         <iframe
-
             id="agid-lineup"
-
-            loading="lazy"
-
-            frameborder="0"
-
-            allowfullscreen>
-
+            loading="lazy">
         </iframe>
 
     </section>
 
-    <!-- ==========================================
-         MATCH EVENTS PANEL
-    =========================================== -->
-
+    <!-- Events -->
     <section
-
-        class="agid-panel"
-
-        id="events">
+        id="MATCH_EVENTS"
+        class="agid-panel">
 
         <iframe
-
             id="agid-events"
-
-            loading="lazy"
-
-            frameborder="0"
-
-            allowfullscreen>
-
+            loading="lazy">
         </iframe>
 
     </section>
 
-    <!-- ==========================================
-         DISCLAIMER
-    =========================================== -->
+    <!-- Disclaimer -->
+    <section
+        id="agid-disclaimer"
+        class="agid-disclaimer">
 
-   <section class="agid-disclaimer" id="agid-disclaimer">
+        <strong>Disclaimer</strong>
 
-        <div class="agid-marquee">
-
-            <div class="agid-marquee-content">
-
-                DISCLAIMER:
-                AGID Football does not host
-                or own any video streams.
-                All content belongs to the
-                respective copyright owners.
-
-            </div>
-
-        </div>
+        We are not affiliated with any stream owners. All rights belong to their respective owners.
 
     </section>
 
-    <!-- ==========================================
-         FOOTER
-    =========================================== -->
-
+    <!-- Footer -->
     <footer class="agid-footer">
 
-<small>
+        Powered by
 
-Powered by
+        <strong id="agid-footer">
 
-<strong id="agid-footer">
+            AGID Football
 
-AGID Football
+        </strong>
 
-</strong>
+    </footer>
 
-</small>
-
-</footer>
-
+</div>
