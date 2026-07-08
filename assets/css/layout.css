@@ -1,0 +1,13 @@
+.container{
+
+width:min(1400px,95%);
+
+margin:auto;
+
+}
+
+.hidden{
+
+display:none;
+
+}
