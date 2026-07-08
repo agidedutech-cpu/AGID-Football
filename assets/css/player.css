@@ -1,11 +1,153 @@
-.player{
+body {
+    font-family: 'Poppins', sans-serif; /* Sets default font style */
+    margin: 0; /* Removes default browser margin */
+    padding: 0; /* Removes default browser padding */
+    background-color: #f0f0f0; /* Light gray background for the page */
+    color: #333; /* Default text color (dark gray) */
+}
 
-width:100%;
+.header {
+    background-color: #6b63f4; /* Purple background for header */
+    color: white; /* White text inside header */
+    text-align: center; /* Centers header text */
+    padding: 10px 0; /* Vertical padding inside header */
+    font-weight: bold; /* Makes header text bold */
+}
 
-background:#000;
+.team-info {
+    padding: 10px; /* Adds spacing inside section */
+    border-bottom: 2px solid #6b63f4; /* Adds purple border below section */
+}
 
-border-radius:10px;
+.tabs {
+    display: flex; /* Aligns child tabs in a row */
+    justify-content: center; /* Centers tabs horizontally */
+    margin: 20px 0; /* Adds vertical spacing */
+    justify-content: space-between; /* Distributes space evenly between tabs */
+    width: 100%; /* Takes full container width */
+}
 
-overflow:hidden;
+.tab {
+    padding: 10px 20px; /* Padding inside tab button */
+    cursor: pointer; /* Changes cursor to pointer */
+    background-color: #ddd; /* Default background for inactive tabs */
+    margin: 0 5px; /* Horizontal spacing between tabs */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Centers text */
+    flex: 1 1 0; /* Makes tabs flexible and equally sized */
+}
 
+.tab.active {
+    background-color: #6b63f4; /* Purple background for active tab */
+    color: white; /* White text for active tab */
+}
+
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Visible only when active */
+}
+
+.ticker-container {
+    overflow: hidden; /* Hides overflowing ticker text */
+    white-space: nowrap; /* Prevents ticker text from wrapping */
+    padding: 10px; /* Spacing inside ticker */
+    background-color: #6b63f4; /* Purple ticker background */
+    color: #fff; /* White text for ticker */
+}
+
+.ticker-content {
+    display: inline-block; /* Makes ticker text inline-block */
+    animation: ticker 60s linear infinite; /* Smooth continuous scrolling animation */
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(100%); /* Starts ticker off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%); /* Moves ticker completely to the left */
+    }
+}
+
+.widget-content {  
+    display: flex; /* Flex container */
+    flex-direction: column; /* Stacks content vertically */
+    align-items: center; /* Centers content horizontally */
+    margin: 20px; /* Spacing around container */
+}
+
+#tv-container {
+    position: relative; /* Allows absolute positioning for iframe */
+    padding-bottom: 56.25%; /* Maintains 16:9 aspect ratio */
+    height: 600px; /* Fixed height */
+    overflow: hidden; /* Hides overflow content */
+}
+
+#tv-iframe {
+    position: absolute; /* Positioned relative to tv-container */
+    top: 0; /* Aligns iframe to top */
+    left: 0; /* Aligns iframe to left */
+    width: 100%; /* Full width */
+    height: 500px; /* Fixed height */
+}
+
+#button-container {
+    display: flex; /* Aligns buttons in a row */
+    justify-content: space-between; /* Spaces buttons apart */
+    width: 100%; /* Full width */
+    flex-wrap: nowrap; /* Prevents buttons from wrapping */
+    overflow-x: auto; /* Enables horizontal scrolling for overflow */
+}
+
+.source-button {
+    flex: 1 1 0; /* Flexible button sizing */
+    margin: 5px; /* Spacing around buttons */
+    padding: 10px; /* Inner padding */
+    background-color: #3498db; /* Blue button background */
+    color: #fff; /* White button text */
+    font-size: calc(1em + (1vw)); /* Responsive font size */
+    font-family: 'Arial Nova', Arial, sans-serif; /* Custom font */
+    font-weight: bold; /* Bold button text */
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Shows "..." if text overflows */
+    border: none; /* Removes border */
+    text-align: center; /* Centers text inside button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.source-button.active {
+    background-color: #4CAF50; /* Green background for active button */
+    color: white; /* White text */
+}
+
+.source-button:hover {
+    background-color: #ddd; /* Light gray background on hover */
+}
+
+.follow-us {
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Centers social links */
+    margin: 20px 0; /* Vertical spacing */
+}
+
+.follow-us a {
+    margin: 0 10px; /* Spacing between social links */
+    padding: 10px 20px; /* Inner padding */
+    background-color: #3498db; /* Blue button background */
+    color: white; /* White link text */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.footer {
+    font-size: 12px; /* Small text */
+    font-family: Arial, sans-serif; /* Footer font */
+    text-align: center; /* Centers footer text */
+    color: #666; /* Gray text color */
+    margin-top: 20px; /* Spacing above footer */
 }
