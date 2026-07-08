@@ -1,30 +1,55 @@
-// ===============================
-// AGID Football Loader
-// Version 1.0
-// ===============================
+(async function () {
 
-console.log("AGID Loader Started");
-if(typeof matchConfig==="undefined"){
+    if (typeof matchConfig === "undefined") {
+        alert("matchConfig was not found.");
+        return;
+    }
 
-alert("Match configuration not found.");
+    const player = document.querySelector("agid-player");
 
-throw new Error("matchConfig is missing.");
+    if (!player) {
+        alert("<agid-player> was not found.");
+        return;
+    }
 
-}
+    player.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:40px;
+            font-size:20px;">
+            Loading Match...
+        </div>
+    `;
 
-const wrapper=document.getElementById("agid-player");
+    try {
 
-if(!wrapper){
+        const response = await fetch(
+            "https://cdn.jsdelivr.net/gh/agidedutech-cpu/AGID-Football@main/assets/html/player.html"
+        );
 
-throw new Error("Player container missing.");
+        const html = await response.text();
 
-}
-wrapper.innerHTML=`
+        player.innerHTML = html;
 
-<div class="loading">
+        const script = document.createElement("script");
 
-Loading Match...
+        script.src =
+        "https://cdn.jsdelivr.net/gh/agidedutech-cpu/AGID-Football@main/assets/js/player.js";
 
-</div>
+        document.body.appendChild(script);
 
-`;
+    }
+
+    catch (error) {
+
+        player.innerHTML = `
+            <h2 style="color:red;">
+                Unable to load player.
+            </h2>
+        `;
+
+        console.error(error);
+
+    }
+
+})();
