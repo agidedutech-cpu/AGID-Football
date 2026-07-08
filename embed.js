@@ -273,7 +273,15 @@
 
             document.getElementById(
                 "agid-stream-buttons"
-            )
+            ),
+
+        footer:
+
+document.getElementById(
+
+"agid-footer"
+
+),
 
     };
 
@@ -335,6 +343,18 @@ this.ui.video.src =
 this.config.streams[defaultStream].url;
 
     }
+
+           if(
+
+this.config.branding.footer
+
+){
+
+this.ui.footer.textContent=
+
+this.config.branding.footer;
+
+}
 
     console.log("✓ Match Loaded");
 
