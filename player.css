@@ -1,548 +1,196 @@
-/* ==========================================================
-   AGID Football Framework
-   Version : 1.0.0
-   Author  : AGID EDU TECH
-   ========================================================== */
-
-/* ===========================
-   ROOT VARIABLES
-=========================== */
-
-:root{
-
-    --primary:#2563eb;
-    --primary-hover:#1d4ed8;
-
-    --secondary:#0f172a;
-
-    --background:#10131a;
-
-    --surface:#1b2330;
-
-    --surface2:#273142;
-
-    --text:#ffffff;
-
-    --text2:#d1d5db;
-
-    --border:#3b4758;
-
-    --success:#16a34a;
-
-    --danger:#dc2626;
-
-    --radius:10px;
-
-    --shadow:0 8px 25px rgba(0,0,0,.30);
-
-}
-
-/* ===========================
-   RESET
-=========================== */
-
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
 
 body{
+font-family:Segoe UI,Arial,sans-serif;
+background:#f4f6fb;
+}
 
-font-family:Segoe UI,Roboto,Arial,sans-serif;
-
-background:var(--background);
-
-color:var(--text);
-
+.agid-wrapper{
+max-width:1200px;
+margin:auto;
+padding:15px;
 }
 
 .agid-header-card{
-
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-
-border-radius:18px;
-
-padding:20px;
-
-margin-bottom:20px;
-
-box-shadow:0 8px 25px rgba(0,0,0,.25);
-
+background:linear-gradient(135deg,#0f172a,#1e40af);
 color:#fff;
-
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+margin-bottom:20px;
 text-align:center;
-
 }
 
 .agid-competition{
-
 font-size:14px;
-
-font-weight:700;
-
+font-weight:bold;
 letter-spacing:1px;
-
 text-transform:uppercase;
-
-opacity:.9;
-
-margin-bottom:18px;
-
+margin-bottom:20px;
 }
 
 .agid-match-row{
-
 display:flex;
-
-align-items:center;
-
 justify-content:space-between;
-
+align-items:center;
 }
 
 .agid-team{
-
 width:40%;
-
 }
 
 .agid-logo{
-
-width:72px;
-
-height:72px;
-
+width:80px;
+height:80px;
 object-fit:contain;
-
-margin-bottom:8px;
-
+margin-bottom:10px;
 }
 
-.agid-team div{
-
-font-size:18px;
-
-font-weight:700;
-
+.agid-team-name{
+font-size:20px;
+font-weight:bold;
 }
 
 .agid-vs{
-
-font-size:32px;
-
+font-size:34px;
 font-weight:900;
-
 color:#ffd700;
-
 }
 
 .agid-status{
-
 margin-top:20px;
-
-font-weight:700;
-
-padding:10px 18px;
-
 display:inline-block;
-
-border-radius:40px;
-
+padding:10px 25px;
 background:#dc2626;
-
-}
-
-/* ===========================
-   PLAYER WRAPPER
-=========================== */
-
-#agid-player-wrapper{
-
-max-width:1200px;
-
-margin:auto;
-
-background:var(--surface);
-
-border-radius:12px;
-
-overflow:hidden;
-
-box-shadow:var(--shadow);
-
-}
-
-/* ===========================
-   HEADER
-=========================== */
-
-.agid-header{
-
-background:linear-gradient(135deg,#1e40af,#2563eb);
-
-padding:18px;
-
-text-align:center;
-
-}
-
-#agid-competition-name{
-
-font-size:15px;
-
+border-radius:30px;
 font-weight:bold;
-
-letter-spacing:1px;
-
 }
 
-#agid-match-title{
-
-margin-top:8px;
-
-font-size:24px;
-
-}
-
-/* ===========================
-   MATCH HEADER
-=========================== */
-
-.agid-team-header{
-
-padding:12px;
-
-background:#fff;
-
-}
-
-#agid-match-header{
-
+.agid-scorebat iframe{
 width:100%;
-
 height:250px;
-
 border:none;
-
+margin-bottom:20px;
 }
-
-/* ===========================
-   TABS
-=========================== */
 
 .agid-tabs{
-
 display:flex;
-
-background:var(--secondary);
-
+gap:10px;
+margin-bottom:20px;
 }
 
 .agid-tab{
-
 flex:1;
-
-padding:15px;
-
+padding:12px;
 border:none;
-
-background:none;
-
-color:white;
-
-font-weight:bold;
-
+border-radius:10px;
 cursor:pointer;
-
+background:#ddd;
+font-weight:bold;
 transition:.3s;
-
-}
-
-.agid-tab:hover{
-
-background:rgba(255,255,255,.08);
-
 }
 
 .agid-tab.active{
-
-background:var(--primary);
-
+background:#2563eb;
+color:#fff;
 }
 
-/* ===========================
-   PANELS
-=========================== */
-
 .agid-panel{
-
 display:none;
-
-padding:20px;
-
 }
 
 .agid-panel.active{
-
 display:block;
-
 }
-
-/* ===========================
-   NOTICE
-=========================== */
-
-.agid-notice{
-
-background:#fff8dc;
-
-border-left:5px solid orange;
-
-padding:15px;
-
-color:#333;
-
-margin-bottom:15px;
-
-}
-
-.agid-loading-message{
-
-text-align:center;
-
-margin-bottom:15px;
-
-font-weight:bold;
-
-}
-
-/* ===========================
-   MARQUEE
-=========================== */
-
-.agid-marquee{
-
-overflow:hidden;
-
-white-space:nowrap;
-
-background:var(--primary);
-
-padding:10px;
-
-border-radius:8px;
-
-margin-bottom:20px;
-
-}
-
-.agid-marquee-content{
-
-display:inline-block;
-
-padding-left:100%;
-
-animation:scroll 25s linear infinite;
-
-}
-
-@keyframes scroll{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(-100%);
-
-}
-
-}
-
-/* ===========================
-   STREAM BUTTONS
-=========================== */
 
 #agid-stream-buttons{
-
 display:flex;
-
-gap:10px;
-
 overflow-x:auto;
-
+gap:10px;
 margin-bottom:20px;
-
-padding-bottom:5px;
-
 }
 
 .agid-stream-btn{
-
-padding:12px 20px;
-
+padding:10px 20px;
 border:none;
-
 border-radius:8px;
-
-cursor:pointer;
-
+background:#2563eb;
+color:#fff;
 font-weight:bold;
-
-background:var(--surface2);
-
-color:white;
-
-transition:.3s;
-
+cursor:pointer;
 white-space:nowrap;
-
-}
-
-.agid-stream-btn:hover{
-
-background:var(--primary);
-
 }
 
 .agid-stream-btn.active{
-
-background:var(--success);
-
+background:#16a34a;
 }
 
-/* ===========================
-   VIDEO
-=========================== */
-
-#agid-video-wrapper{
-
+.agid-video-wrapper{
 position:relative;
-
 padding-bottom:56.25%;
-
 height:0;
-
 overflow:hidden;
-
+border-radius:15px;
 background:#000;
-
-border-radius:10px;
-
 margin-bottom:20px;
-
 }
 
-#agid-video{
-
+.agid-video-wrapper iframe{
 position:absolute;
-
-left:0;
-
 top:0;
-
+left:0;
 width:100%;
-
 height:100%;
-
 border:none;
-
 }
 
-/* ===========================
-   MOMENTUM
-=========================== */
-
-#agid-momentum{
-
-width:100%;
-
-height:300px;
-
-border:none;
-
-border-radius:8px;
-
-}
-
-/* ===========================
-   LINEUP / EVENTS
-=========================== */
-
+.agid-widget iframe,
 #agid-lineup,
-
 #agid-events{
-
 width:100%;
-
-height:700px;
-
+height:650px;
 border:none;
-
-border-radius:8px;
-
+border-radius:10px;
 }
-
-/* ===========================
-   DISCLAIMER
-=========================== */
 
 .agid-disclaimer{
-
-padding:20px;
-
+margin-top:20px;
+padding:15px;
+background:#fff3cd;
+border-left:5px solid #ffc107;
+border-radius:8px;
+font-size:14px;
 }
-
-/* ===========================
-   FOOTER
-=========================== */
 
 .agid-footer{
-
-padding:20px;
-
+margin-top:20px;
 text-align:center;
-
-background:#0b1220;
-
-color:#bbb;
-
+font-size:14px;
+font-weight:bold;
+color:#555;
 }
-
-/* ===========================
-   MOBILE
-=========================== */
 
 @media(max-width:768px){
 
-#agid-match-title{
-
-font-size:19px;
-
+.agid-match-row{
+flex-direction:column;
+gap:20px;
 }
 
-.agid-tab{
-
-font-size:13px;
-
-padding:12px 6px;
-
+.agid-team{
+width:100%;
 }
 
-#agid-lineup,
+.agid-vs{
+font-size:26px;
+}
 
-#agid-events{
-
-height:600px;
-
+.agid-tabs{
+flex-direction:column;
 }
 
 }
