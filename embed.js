@@ -282,6 +282,13 @@ document.getElementById(
 "agid-footer"
 
 ),
+        disclaimer:
+
+document.getElementById(
+
+"agid-disclaimer"
+
+),
 
     };
 
@@ -353,6 +360,15 @@ this.config.branding.footer
 this.ui.footer.textContent=
 
 this.config.branding.footer;
+
+}
+    if(
+
+this.config.branding.showDisclaimer===false
+
+){
+
+this.ui.disclaimer.style.display="none";
 
 }
 
