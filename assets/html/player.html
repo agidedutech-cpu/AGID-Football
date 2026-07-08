@@ -1,70 +1,65 @@
-<header class="header">
-    <h2 id="match-title"></h2>
-</header>
-
 <div class="team-info">
-    <iframe id="match-header"
-        loading="lazy"
-        scrolling="no"
-        style="width:100%;height:250px;border:none;">
-    </iframe>
-</div>
+    <iframe id="match-header" scrolling="no" loading="lazy"
+      style="overflow:hidden; width:100%; height:250px; border:none;"></iframe>
+  </div>
 
-<div class="tabs">
+  <!-- Tabs -->
+  <div class="tabs">
+    <div id="MATCH_BROADCAST-tab" class="tab active" onclick="changeTab('MATCH_BROADCAST')">MATCH BROADCAST</div>
+    <div id="LINE_UP-tab" class="tab" onclick="changeTab('LINE_UP')">LINE UP</div>
+    <div id="MATCH_EVENTS-tab" class="tab" onclick="changeTab('MATCH_EVENTS')">MATCH EVENTS</div>
+  </div>
 
-    <button
-        id="MATCH_BROADCAST-tab"
-        class="tab active">
-        MATCH BROADCAST
-    </button>
+  <!-- Broadcast Tab -->
+  <div id="MATCH_BROADCAST" class="tab-content active">
+    <p style="text-align:center;">NOTE: IF REDIRECTED, CLICK BACK 🔙 THEN CLICK AGAIN.</p>
+    <p style="text-align:center;">STREAMS MAY TAKE UP TO 15 SECONDS TO LOAD. PLEASE WAIT...</p>
 
-    <button
-        id="LINE_UP-tab"
-        class="tab">
-        LINE UP
-    </button>
+       <!-- Reminder Ticker -->
+      <div class="ticker-container">
+      <div class="ticker-content">
+        Please make sure you check all the TVs available to know the one that works perfectly.
+        <span style="font-family: courier;">
+          If the first doesn't work, try the second; If the second doesn't work, try the third; If the third doesn't work, try the next one
+        </span>
+      </div>
+    </div>
 
-    <button
-        id="MATCH_EVENTS-tab"
-        class="tab">
-        MATCH EVENTS
-    </button>
+      
+    <!-- Stream Buttons -->
+    <div id="button-container"></div>
 
-</div>
+    <!-- TV iframe -->
+    <div id="tv-container">
+      <iframe id="tv-iframe" frameborder="0" scrolling="no" rel="nofollow"
+         allowfullscreen loading="lazy"></iframe>
+    </div>
 
-<div
-id="MATCH_BROADCAST"
-class="tab-content active">
+    <!-- Momentum iframe -->
+    <div id="momentum-container">
+      <iframe id="momentum-iframe" width="100%" height="286" frameborder="0" scrolling="no" rel="nofollow"
+        loading="lazy"></iframe>
+    </div>
+       
+      </div>
 
-<div id="button-container"></div>
+  <!-- Line Up Tab -->
+  <div id="LINE_UP" class="tab-content">
+    <iframe id="lineup-iframe" frameborder="0" width="560" height="650" loading="lazy" allowfullscreen
+      style="width:100%;overflow:hidden;"></iframe>
+  </div>
 
-<div id="tv-container">
+  <!-- Match Events Tab -->
+  <div id="MATCH_EVENTS" class="tab-content">
+    <iframe id="events-iframe" frameborder="0" width="560" height="650" loading="lazy" allowfullscreen
+      style="width:100%;overflow:hidden;"></iframe>
+  </div>
 
-<iframe
-id="tv-iframe"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</div>
-
-<div
-id="LINE_UP"
-class="tab-content">
-
-<iframe
-id="lineup-iframe">
-</iframe>
-
-</div>
-
-<div
-id="MATCH_EVENTS"
-class="tab-content">
-
-<iframe
-id="events-iframe">
-</iframe>
-
-</div>
+<!-- Disclaimer Ticker -->
+ <div class="ticker-container" style="margin-top:20px;">
+      <div class="ticker-content">
+        ATTENTION!!!: Disclaimer: We are not affiliated with, nor claim affiliation with, any owners of videos/streams/TV Channel on our site, and all content is copyrighted by respective owners. We disclaim responsibility for site content and have no control over audiovisual content. Viewers should use discretion in processing information. For issues, contact the respective owners.
+      </div>
+    </div>
+  <div class="footer">Data provided by <a href="https://www.facebook.com/salawudeenabdulmaleek08"
+      target="_blank">Triple A</a></div>
