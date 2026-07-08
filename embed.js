@@ -4,11 +4,24 @@
  * Author: AGID EDU TECH
  */
 
-(function () {
-    "use strict";
+(function (window) {
 
-    console.log("=================================");
-    console.log(" AGID Football Framework v1.0 ");
-    console.log("=================================");
+"use strict";
 
-})();
+const AGID = {
+
+version: "1.0.0",
+
+init: function(config){
+
+console.log("Framework Started");
+
+console.log(config);
+
+}
+
+};
+
+window.AGID = AGID;
+
+})(window);
