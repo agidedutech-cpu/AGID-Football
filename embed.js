@@ -171,32 +171,130 @@
          */
         render() {
 
-            console.log("Rendering player...");
+    console.log("Rendering Player...");
 
-            /*
-             * Future methods
-             */
+    this.cacheUI();
 
-            this.loadMatch();
+    this.loadMatch();
 
-            this.createButtons();
+    this.createButtons();
 
-            this.activateTabs();
+    this.activateTabs();
 
-        },
+},
+        cacheUI() {
+
+    this.ui = {
+
+        competition:
+
+            document.getElementById(
+                "agid-competition-name"
+            ),
+
+        title:
+
+            document.getElementById(
+                "agid-match-title"
+            ),
+
+        header:
+
+            document.getElementById(
+                "agid-match-header"
+            ),
+
+        video:
+
+            document.getElementById(
+                "agid-video"
+            ),
+
+        lineup:
+
+            document.getElementById(
+                "agid-lineup"
+            ),
+
+        events:
+
+            document.getElementById(
+                "agid-events"
+            ),
+
+        momentum:
+
+            document.getElementById(
+                "agid-momentum"
+            ),
+
+        streamButtons:
+
+            document.getElementById(
+                "agid-stream-buttons"
+            )
+
+    };
+
+    console.log("✓ UI Cached");
+
+},
 
         /**
          * ==========================================
          * LOAD MATCH INFORMATION
          * ==========================================
          */
-        loadMatch() {
+       loadMatch() {
 
-            console.log("Loading match information...");
+    const match = this.config.match;
 
-            // Next lesson
+    this.ui.competition.textContent =
+        match.competition;
 
-        },
+    this.ui.title.textContent =
+        match.home.name +
+        " vs " +
+        match.away.name;
+
+    this.ui.header.src =
+        "https://www.scorebat.com/embed/matchview/" +
+        match.id +
+        "/";
+
+    this.ui.lineup.src =
+        "https://www.scorebat.com/embed/line-up/" +
+        match.id +
+        "/";
+
+    this.ui.events.src =
+        "https://www.scorebat.com/embed/matchview/" +
+        match.id +
+        "/";
+
+    if (
+        this.config.widgets &&
+        this.config.widgets.momentum
+    ) {
+
+        this.ui.momentum.src =
+            "https://widgets.sofascore.com/embed/attackMomentum?id=" +
+            this.config.widgets.momentum;
+
+    }
+
+    if (
+        this.config.streams.length
+    ) {
+
+        this.ui.video.src =
+            this.config.streams[0].url;
+
+    }
+
+    console.log("✓ Match Loaded");
+
+},
 
         /**
          * ==========================================
@@ -205,25 +303,130 @@
          */
         createButtons() {
 
-            console.log("Creating stream buttons...");
+    const container =
+        this.ui.streamButtons;
 
-            // Next lesson
+    container.innerHTML = "";
 
-        },
+    this.config.streams.forEach((stream, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "agid-stream-btn";
+
+        button.textContent =
+            stream.name;
+
+        if (index === 0) {
+
+            button.classList.add("active");
+
+        }
+
+        button.addEventListener(
+
+            "click",
+
+            () => {
+
+                container
+                    .querySelectorAll(
+                        ".agid-stream-btn"
+                    )
+                    .forEach(btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+                button.classList.add(
+                    "active"
+                );
+
+                this.ui.video.src =
+                    stream.url;
+
+            }
+
+        );
+
+        container.appendChild(
+            button
+        );
+
+    });
+
+    console.log("✓ Stream Buttons Ready");
+
+},
 
         /**
          * ==========================================
          * ACTIVATE TABS
          * ==========================================
          */
-        activateTabs() {
+       activateTabs() {
 
-            console.log("Activating tabs...");
+    const tabs =
+        document.querySelectorAll(
+            ".agid-tab"
+        );
 
-            // Next lesson
+    const panels =
+        document.querySelectorAll(
+            ".agid-panel"
+        );
 
-        },
+    tabs.forEach(tab => {
 
+        tab.addEventListener(
+
+            "click",
+
+            () => {
+
+                tabs.forEach(item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                });
+
+                panels.forEach(panel => {
+
+                    panel.classList.remove(
+                        "active"
+                    );
+
+                });
+
+                tab.classList.add(
+                    "active"
+                );
+
+                document
+                    .getElementById(
+                        tab.dataset.tab
+                    )
+                    .classList.add(
+                        "active"
+                    );
+
+            }
+
+        );
+
+    });
+
+    console.log("✓ Tabs Ready");
+
+},
+ui:{},
         /**
          * ==========================================
          * DISPLAY ERROR
