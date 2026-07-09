@@ -60,21 +60,63 @@
          */
         validateConfig() {
 
-            const config = this.config;
+    const config = this.config;
 
-            if (!config.match) {
-                throw new Error("AGID: match object is required.");
-            }
+    if (!config.match) {
 
-            if (!config.streams || !Array.isArray(config.streams)) {
-                throw new Error("AGID: streams array is required.");
-            }
+        throw new Error(
+            "AGID: match object is required."
+        );
 
-            if (config.streams.length === 0) {
-                throw new Error("AGID: At least one stream is required.");
-            }
+    }
 
-        },
+    if (!config.match.id) {
+
+        throw new Error(
+            "AGID: match.id is required."
+        );
+
+    }
+
+    if (!config.match.home) {
+
+        throw new Error(
+            "AGID: home team is required."
+        );
+
+    }
+
+    if (!config.match.away) {
+
+        throw new Error(
+            "AGID: away team is required."
+        );
+
+    }
+
+    if (!Array.isArray(config.streams)) {
+
+        throw new Error(
+            "AGID: streams must be an array."
+        );
+
+    }
+
+    if (config.streams.length === 0) {
+
+        throw new Error(
+            "AGID: At least one stream is required."
+        );
+
+    }
+
+    config.options = config.options || {};
+
+    config.widgets = config.widgets || {};
+
+    config.branding = config.branding || {};
+
+},
 
         /**
          * ==========================================
@@ -287,8 +329,11 @@
         this.config.streams.length
     ) {
 
-        this.ui.video.src =
-            this.config.streams[0].url;
+       const defaultStream =
+this.config.options.defaultStream || 0;
+
+this.ui.video.src =
+this.config.streams[defaultStream].url;
 
     }
 
