@@ -1,627 +1,118 @@
 /*!
- * ==========================================================
- * AGID Football Framework
- * Version : 1.0.0
- * Author  : AGID EDU TECH
- * Website : https://agidedutech-cpu.github.io/AGID-Football/
- * ==========================================================
- */
+====================================================
+AGID Football Framework
+Version : 2.0.0
+Author  : AGID EDU TECH
+====================================================
+*/
 
 (function (window, document) {
 
-    "use strict";
+"use strict";
 
-    const AGID = {
+const AGID = {
 
-        version: "1.0.0",
+version:"2.0.0",
 
-        config: null,
+config:null,
 
-        container: null,
+container:null,
 
-        /**
-         * ==========================================
-         * INITIALIZE FRAMEWORK
-         * ==========================================
-         */
-        init(config) {
+init:function(config){
 
-            if (!config) {
-                throw new Error("AGID: Configuration object is required.");
-            }
-
-            this.config = config;
-
-            const containerId = config.container || "agid-player";
-
-            this.container = document.getElementById(containerId);
-
-            if (!this.container) {
-                throw new Error(
-                    `AGID: Container "${containerId}" was not found.`
-                );
-            }
-
-            this.validateConfig();
-
-            console.log(
-                "%cAGID Football Framework v" + this.version,
-                "color:#2563eb;font-size:14px;font-weight:bold;"
-            );
-
-            this.loadCSS();
-
-        },
-
-        /**
-         * ==========================================
-         * VALIDATE CONFIGURATION
-         * ==========================================
-         */
-        validateConfig() {
-
-    const config = this.config;
-
-    if (!config.match) {
-
-        throw new Error(
-            "AGID: match object is required."
-        );
-
-    }
-
-    if (!config.match.id) {
-
-        throw new Error(
-            "AGID: match.id is required."
-        );
-
-    }
-
-    if (!config.match.home) {
-
-        throw new Error(
-            "AGID: home team is required."
-        );
-
-    }
-
-    if (!config.match.away) {
-
-        throw new Error(
-            "AGID: away team is required."
-        );
-
-    }
-
-    if (!Array.isArray(config.streams)) {
-
-        throw new Error(
-            "AGID: streams must be an array."
-        );
-
-    }
-
-    if (config.streams.length === 0) {
-
-        throw new Error(
-            "AGID: At least one stream is required."
-        );
-
-    }
-
-    config.options = config.options || {};
-
-    config.widgets = config.widgets || {};
-
-    config.branding = config.branding || {};
-
-},
-        /**
-         * ==========================================
-         * LOAD PLAYER CSS
-         * ==========================================
-         */
-        loadCSS() {
-
-            const base = this.config.base || "./";
-
-            const cssURL = base + "player.css";
-
-            // Prevent duplicate loading
-            const alreadyLoaded = document.querySelector(
-                `link[href="${cssURL}"]`
-            );
-
-            if (alreadyLoaded) {
-                this.loadHTML();
-                return;
-            }
-
-            const css = document.createElement("link");
-
-            css.rel = "stylesheet";
-
-            css.href = cssURL;
-
-            css.onload = () => {
-
-                console.log("✓ player.css loaded");
-
-                this.loadHTML();
-
-            };
-
-            css.onerror = () => {
-
-                this.showError(
-                    "Unable to load player.css"
-                );
-
-            };
-
-            document.head.appendChild(css);
-
-        },
-
-        /**
-         * ==========================================
-         * LOAD PLAYER HTML
-         * ==========================================
-         */
-        async loadHTML() {
-
-            const base = this.config.base || "./";
-
-            try {
-
-                const response = await fetch(
-                    base + "player.html"
-                );
-
-                if (!response.ok) {
-                    throw new Error(
-                        "player.html not found."
-                    );
-                }
-
-                const html = await response.text();
-
-                this.container.innerHTML = html;
-
-                console.log("✓ player.html loaded");
-
-                this.render();
-
-            }
-
-            catch (error) {
-
-                this.showError(error.message);
-
-                console.error(error);
-
-            }
-
-        },
-
-        /**
-         * ==========================================
-         * RENDER PLAYER
-         * ==========================================
-         */
-        render() {
-
-    console.log("Rendering Player...");
-
-    this.cacheUI();
-
-    this.loadMatch();
-
-    this.createButtons();
-
-    this.activateTabs();
-
-},
-        cacheUI() {
-
-    this.ui = {
-
-        competition:
-
-            document.getElementById(
-                "agid-competition-name"
-            ),
-
-        title:
-
-            document.getElementById(
-                "agid-match-title"
-            ),
-
-        header:
-
-            document.getElementById(
-                "agid-match-header"
-            ),
-
-        video:
-
-            document.getElementById(
-                "agid-video"
-            ),
-
-        lineup:
-
-            document.getElementById(
-                "agid-lineup"
-            ),
-
-        events:
-
-            document.getElementById(
-                "agid-events"
-            ),
-
-        momentum:
-
-            document.getElementById(
-                "agid-momentum"
-            ),
-
-        streamButtons:
-
-            document.getElementById(
-                "agid-stream-buttons"
-            ),
-
-        footer:
-
-document.getElementById(
-
-"agid-footer"
-
-),
-        disclaimer:
-
-document.getElementById(
-
-"agid-disclaimer"
-
-),
-
- homeLogo:
-document.getElementById("agid-home-logo"),
-
-awayLogo:
-document.getElementById("agid-away-logo"),
-
-homeName:
-document.getElementById("agid-home-name"),
-
-awayName:
-document.getElementById("agid-away-name"),
-
-status:
-document.getElementById("agid-status"),
-
-    };
-
-    console.log("✓ UI Cached");
-
-},
-
-        /**
-         * ==========================================
-         * LOAD MATCH INFORMATION
-         * ==========================================
-         */
-       loadMatch() {
-
-    const match = this.config.match;
-
-    this.ui.competition.textContent =
-        match.competition;
-
-this.ui.homeLogo.src =
-match.home.logo;
-
-this.ui.awayLogo.src =
-match.away.logo;
-
-this.ui.homeName.textContent =
-match.home.name;
-
-this.ui.awayName.textContent =
-match.away.name;
-
-this.startCountdown();
-
-    this.ui.header.src =
-        "https://www.scorebat.com/embed/matchview/" +
-        match.id +
-        "/";
-
-    this.ui.lineup.src =
-        "https://www.scorebat.com/embed/line-up/" +
-        match.id +
-        "/";
-
-    this.ui.events.src =
-        "https://www.scorebat.com/embed/matchview/" +
-        match.id +
-        "/";
-
-    if (
-        this.config.widgets &&
-        this.config.widgets.momentum
-    ) {
-
-        this.ui.momentum.src =
-            "https://widgets.sofascore.com/embed/attackMomentum?id=" +
-            this.config.widgets.momentum;
-
-    }
-
-    if (
-        this.config.streams.length
-    ) {
-
-        const defaultStream =
-this.config.options.defaultStream || 0;
-
-this.ui.video.src =
-this.config.streams[defaultStream].url;
-
-    }
-
-           if(
-
-this.config.branding.footer
-
-){
-
-this.ui.footer.textContent=
-
-this.config.branding.footer;
-
+if(!config){
+console.error("AGID Config Missing");
+return;
 }
-    if(
 
-this.config.branding.showDisclaimer===false
+this.config=config;
 
-){
+this.container=document.getElementById(
+config.container || "agid-player"
+);
 
-this.ui.disclaimer.style.display="none";
+if(!this.container){
+console.error("Container not found.");
+return;
+}
+
+this.loadCSS();
+
+},
+
+loadCSS:function(){
+
+const css=document.createElement("link");
+
+css.rel="stylesheet";
+
+css.href=this.config.base+"player.css";
+
+css.onload=()=>{
+
+this.loadHTML();
+
+};
+
+document.head.appendChild(css);
+
+},
+
+loadHTML:function(){
+
+fetch(this.config.base+"player.html")
+
+.then(response=>response.text())
+
+.then(html=>{
+
+this.container.innerHTML=html;
+
+this.loadPlayer();
+
+})
+
+.catch(error=>{
+
+console.error(error);
+
+this.container.innerHTML=
+"<h2 style='padding:20px;text-align:center'>Unable to load player.html</h2>";
+
+});
+
+},
+
+loadPlayer:function(){
+
+const old=document.getElementById("agid-player-script");
+
+if(old){
+old.remove();
+}
+
+const script=document.createElement("script");
+
+script.id="agid-player-script";
+
+script.src=this.config.base+"player.js";
+
+script.onload=()=>{
+
+if(typeof AGID_PLAYER!=="undefined"){
+
+AGID_PLAYER.init(this.config);
 
 }
 
-           startCountdown() {
+};
 
-    const kickoff = new Date(this.config.match.kickoff);
-
-    const end = new Date(
-        kickoff.getTime() +
-        this.config.match.duration * 60000
-    );
-
-    const update = () => {
-
-        const now = new Date();
-
-        if (now < kickoff) {
-
-            const diff = kickoff - now;
-
-            const h = Math.floor(diff / 3600000);
-
-            const m = Math.floor((diff % 3600000) / 60000);
-
-            const s = Math.floor((diff % 60000) / 1000);
-
-            this.ui.status.innerHTML =
-                "⏳ Starts in " +
-                String(h).padStart(2, "0") +
-                ":" +
-                String(m).padStart(2, "0") +
-                ":" +
-                String(s).padStart(2, "0");
-
-            this.ui.status.style.background =
-                "#2563eb";
-
-        }
-
-        else if (now < end) {
-
-            this.ui.status.innerHTML =
-                "🔴 LIVE";
-
-            this.ui.status.style.background =
-                "#dc2626";
-
-        }
-
-        else {
-
-            this.ui.status.innerHTML =
-                "✅ FULL TIME";
-
-            this.ui.status.style.background =
-                "#16a34a";
-
-        }
-
-    };
-
-    update();
-
-    setInterval(update, 1000);
+document.body.appendChild(script);
 
 }
 
-    console.log("✓ Match Loaded");
+};
 
-},
+window.AGID=AGID;
 
-        /**
-         * ==========================================
-         * CREATE STREAM BUTTONS
-         * ==========================================
-         */
-        createButtons() {
-
-    const container =
-        this.ui.streamButtons;
-
-    container.innerHTML = "";
-
-    this.config.streams.forEach((stream, index) => {
-
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "agid-stream-btn";
-
-        button.textContent =
-            stream.name;
-
-        if (index === 0) {
-
-            button.classList.add("active");
-
-        }
-
-        button.addEventListener(
-
-            "click",
-
-            () => {
-
-                container
-                    .querySelectorAll(
-                        ".agid-stream-btn"
-                    )
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-                button.classList.add(
-                    "active"
-                );
-
-                this.ui.video.src =
-                    stream.url;
-
-            }
-
-        );
-
-        container.appendChild(
-            button
-        );
-
-    });
-
-    console.log("✓ Stream Buttons Ready");
-
-},
-
-        /**
-         * ==========================================
-         * ACTIVATE TABS
-         * ==========================================
-         */
-       activateTabs() {
-
-    const tabs =
-        document.querySelectorAll(
-            ".agid-tab"
-        );
-
-    const panels =
-        document.querySelectorAll(
-            ".agid-panel"
-        );
-
-    tabs.forEach(tab => {
-
-        tab.addEventListener(
-
-            "click",
-
-            () => {
-
-                tabs.forEach(item => {
-
-                    item.classList.remove(
-                        "active"
-                    );
-
-                });
-
-                panels.forEach(panel => {
-
-                    panel.classList.remove(
-                        "active"
-                    );
-
-                });
-
-                tab.classList.add(
-                    "active"
-                );
-
-                document
-                    .getElementById(
-                        tab.dataset.tab
-                    )
-                    .classList.add(
-                        "active"
-                    );
-
-            }
-
-        );
-
-    });
-
-    console.log("✓ Tabs Ready");
-
-},
-ui:{},
-        /**
-         * ==========================================
-         * DISPLAY ERROR
-         * ==========================================
-         */
-        showError(message) {
-
-            this.container.innerHTML = `
-                <div style="
-                    background:#ffe5e5;
-                    color:#b00020;
-                    border:1px solid #ffb3b3;
-                    padding:20px;
-                    border-radius:8px;
-                    font-family:Arial,sans-serif;
-                    margin:20px;
-                ">
-                    <strong>AGID Football Error</strong>
-                    <br><br>
-                    ${message}
-                </div>
-            `;
-
-        }
-
-    };
-
-    window.AGID = AGID;
-
-})(window, document);
+})(window,document);
