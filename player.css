@@ -194,3 +194,201 @@ flex-direction:column;
 }
 
 }
+
+/* =====================================================
+   AGID Football Mobile Optimization v2.0
+   Add this BELOW your existing CSS
+===================================================== */
+
+@media screen and (max-width:768px){
+
+/* Wrapper */
+.agid-wrapper{
+padding:10px;
+}
+
+/* Header */
+.agid-header-card{
+padding:15px;
+border-radius:12px;
+}
+
+/* Competition */
+.agid-competition{
+font-size:13px;
+margin-bottom:12px;
+}
+
+/* Keep teams horizontal */
+.agid-match-row{
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+/* Teams */
+.agid-team{
+width:38%;
+text-align:center;
+}
+
+.agid-logo{
+width:55px;
+height:55px;
+margin-bottom:8px;
+}
+
+.agid-team-name{
+font-size:16px;
+font-weight:700;
+word-break:break-word;
+}
+
+/* VS */
+.agid-vs{
+font-size:24px;
+}
+
+/* Status Badge */
+.agid-status{
+padding:8px 16px;
+font-size:13px;
+margin-top:12px;
+}
+
+/* Match Header Widget */
+.agid-scorebat iframe{
+height:210px;
+}
+
+/* Horizontal Scroll Tabs */
+.agid-tabs{
+display:flex;
+flex-wrap:nowrap;
+overflow-x:auto;
+overflow-y:hidden;
+gap:8px;
+padding-bottom:6px;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+}
+
+.agid-tabs::-webkit-scrollbar{
+display:none;
+}
+
+.agid-tab{
+flex:0 0 auto;
+padding:10px 18px;
+font-size:13px;
+white-space:nowrap;
+}
+
+/* Stream Buttons */
+#agid-stream-buttons{
+display:flex;
+flex-wrap:nowrap;
+overflow-x:auto;
+gap:8px;
+padding-bottom:6px;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+}
+
+#agid-stream-buttons::-webkit-scrollbar{
+display:none;
+}
+
+.agid-stream-btn{
+flex:0 0 auto;
+padding:10px 18px;
+font-size:13px;
+white-space:nowrap;
+}
+
+/* Video */
+.agid-video-wrapper{
+border-radius:10px;
+margin-bottom:15px;
+}
+
+/* Widgets */
+.agid-widget iframe{
+height:260px;
+}
+
+/* Lineup & Events */
+#agid-lineup,
+#agid-events{
+height:500px;
+}
+
+/* Disclaimer */
+.agid-disclaimer{
+font-size:13px;
+padding:12px;
+}
+
+/* Footer */
+.agid-footer{
+font-size:12px;
+padding-bottom:20px;
+}
+
+}
+
+
+/* =====================================================
+   Small Phones (320px–480px)
+===================================================== */
+
+@media screen and (max-width:480px){
+
+.agid-header-card{
+padding:12px;
+}
+
+.agid-logo{
+width:45px;
+height:45px;
+}
+
+.agid-team-name{
+font-size:14px;
+}
+
+.agid-vs{
+font-size:20px;
+}
+
+.agid-status{
+font-size:12px;
+padding:6px 14px;
+}
+
+.agid-scorebat iframe{
+height:180px;
+}
+
+.agid-widget iframe{
+height:230px;
+}
+
+#agid-lineup,
+#agid-events{
+height:420px;
+}
+
+.agid-stream-btn{
+padding:8px 14px;
+font-size:12px;
+}
+
+.agid-tab{
+padding:8px 14px;
+font-size:12px;
+}
+
+}
