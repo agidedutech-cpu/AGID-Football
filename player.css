@@ -174,27 +174,6 @@ font-weight:bold;
 color:#555;
 }
 
-@media(max-width:768px){
-
-.agid-match-row{
-flex-direction:column;
-gap:20px;
-}
-
-.agid-team{
-width:100%;
-}
-
-.agid-vs{
-font-size:26px;
-}
-
-.agid-tabs{
-flex-direction:column;
-}
-
-}
-
 /* =====================================================
    AGID Football Mobile Optimization v2.0
    Add this BELOW your existing CSS
