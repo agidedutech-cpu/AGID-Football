@@ -1,179 +1,70 @@
-<div class="agid-wrapper">
+<header class="header">
+    <h2 id="match-title"></h2>
+</header>
 
-    <!-- Premium Match Header -->
-    <header class="agid-header-card">
+<div class="team-info">
+    <iframe id="match-header"
+        loading="lazy"
+        scrolling="no"
+        style="width:100%;height:250px;border:none;">
+    </iframe>
+</div>
 
-        <div id="agid-competition-name" class="agid-competition">
-            Competition
-        </div>
+<div class="tabs">
 
-        <div class="agid-match-row">
+    <button
+        id="MATCH_BROADCAST-tab"
+        class="tab active">
+        MATCH BROADCAST
+    </button>
 
-    <div class="agid-team">
+    <button
+        id="LINE_UP-tab"
+        class="tab">
+        LINE UP
+    </button>
 
-        <img id="agid-home-logo" class="agid-logo">
-
-        <div id="agid-home-name"
-             class="agid-team-name">
-        </div>
-
-    </div>
-
-    <div class="agid-center">
-
-        <div id="agid-score"
-             class="agid-score">
-
-            VS
-
-        </div>
-
-        <div id="agid-time"
-             class="agid-time">
-
-            --:--
-
-        </div>
-
-        <div id="agid-status"
-             class="agid-status">
-
-            Upcoming
-
-        </div>
-
-    </div>
-
-    <div class="agid-team">
-
-        <img id="agid-away-logo"
-             class="agid-logo">
-
-        <div id="agid-away-name"
-             class="agid-team-name">
-        </div>
-
-    </div>
+    <button
+        id="MATCH_EVENTS-tab"
+        class="tab">
+        MATCH EVENTS
+    </button>
 
 </div>
 
-    </header>
+<div
+id="MATCH_BROADCAST"
+class="tab-content active">
 
-    <!-- ScoreBat Match Widget -->
-    <section class="agid-scorebat">
+<div id="button-container"></div>
 
-        <iframe
-            id="agid-match-header"
-            loading="lazy"
-            scrolling="no"
-            frameborder="0">
-        </iframe>
+<div id="tv-container">
 
-    </section>
+<iframe
+id="tv-iframe"
+allowfullscreen>
+</iframe>
 
-    <!-- Tabs -->
-    <nav class="agid-tabs">
+</div>
 
-        <button
-            class="agid-tab active"
-            data-tab="MATCH_BROADCAST">
+</div>
 
-            MATCH BROADCAST
+<div
+id="LINE_UP"
+class="tab-content">
 
-        </button>
+<iframe
+id="lineup-iframe">
+</iframe>
 
-        <button
-            class="agid-tab"
-            data-tab="LINE_UP">
+</div>
 
-            LINE UP
+<div
+id="MATCH_EVENTS"
+class="tab-content">
 
-        </button>
-
-        <button
-            class="agid-tab"
-            data-tab="MATCH_EVENTS">
-
-            MATCH EVENTS
-
-        </button>
-
-    </nav>
-
-    <!-- Broadcast -->
-    <section
-        id="MATCH_BROADCAST"
-        class="agid-panel active">
-
-        <div id="agid-stream-buttons"></div>
-
-        <div class="agid-video-wrapper">
-
-            <iframe
-                id="agid-video"
-                allowfullscreen
-                loading="lazy">
-            </iframe>
-
-        </div>
-
-        <div class="agid-widget">
-
-            <iframe
-                id="agid-momentum"
-                loading="lazy">
-            </iframe>
-
-        </div>
-
-    </section>
-
-    <!-- Line-up -->
-    <section
-        id="LINE_UP"
-        class="agid-panel">
-
-        <iframe
-            id="agid-lineup"
-            loading="lazy">
-        </iframe>
-
-    </section>
-
-    <!-- Events -->
-    <section
-        id="MATCH_EVENTS"
-        class="agid-panel">
-
-        <iframe
-            id="agid-events"
-            loading="lazy">
-        </iframe>
-
-    </section>
-
-    <!-- Disclaimer -->
-    <section
-        id="agid-disclaimer"
-        class="agid-disclaimer">
-
-        <strong>Disclaimer</strong>
-
-        We are not affiliated with any stream owners. All rights belong to their respective owners.
-
-    </section>
-
-    <!-- Footer -->
-    <footer class="agid-footer">
-
-        Powered by
-
-        <strong id="agid-footer">
-
-            AGID Football
-
-        </strong>
-
-    </footer>
+<iframe
+id="events-iframe">
+</iframe>
 
 </div>
